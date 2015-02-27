@@ -1696,6 +1696,7 @@ aside ul.nav-list > li > a {
 
 .slider-container .tp-caption {
 	opacity: 0;
+	color: #878787;
 }
 
 .slider-container .tp-caption a {
@@ -1756,6 +1757,7 @@ aside ul.nav-list > li > a {
 	height: 495px;
 	max-height: 495px;
 	position: relative;
+	background-color: #0053a5;
 }
 
 .slider > ul > li > img {
