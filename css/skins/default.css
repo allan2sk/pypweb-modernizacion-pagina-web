@@ -1,7 +1,7 @@
 h3,
 h4,
 h5 {
-	color: #0088cc;
+	color: #005db9;
 }
 
 a {
@@ -92,10 +92,10 @@ body.dark .pagination > .active > span:focus {
 .pagination > .active > a,
 body.dark .pagination > .active > a,
 .owl-theme .owl-controls .owl-nav [class*="owl-"] {
-	border-color: #0088cc !important;
+	border-color: #005db9 !important;
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #0088cc;
+	background-color: #005db9;
 	border-color: #0088cc;
 }
 
@@ -240,7 +240,7 @@ section.page-top.custom-product {
 }
 
 .feature-box .feature-box-icon {
-	background-color: #0088cc;
+	background-color: #005db9;
 }
 
 .feature-box.secundary .feature-box-icon i.fa {
@@ -268,12 +268,12 @@ section.page-top.custom-product {
 }
 
 .inverted {
-	background-color: #0088cc;
+	background-color: #005db9;
 }
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-	background-color: #0074ad;
+	background-color: #005db9;
 }
 
 .tabs ul.nav-tabs a,
@@ -334,7 +334,7 @@ section.video blockquote i.fa-quote-left {
 }
 
 .panel-group .panel-heading a {
-	color: #0088cc;
+	color: #005db9;
 }
 
 .panel-group.secundary .panel-heading {
@@ -347,7 +347,7 @@ section.video blockquote i.fa-quote-left {
 #header nav ul.nav-main li > a:hover,
 #header nav ul.nav-main li.dropdown:hover a {
 	color: #FFF;
-	background-color: #0088cc !important;
+	background-color: #005db9 !important;
 }
 
 #header nav ul.nav-main ul.dropdown-menu li:hover > a {
@@ -419,11 +419,11 @@ section.video blockquote i.fa-quote-left {
 }
 
 blockquote.testimonial {
-	background: #0099e6;
+	background: #005db9;
 }
 
 .testimonial-arrow-down {
-	border-top-color: #0099e6;
+	border-top-color: #005db9;
 }
 
 .featured-box-secundary i.icon-featured {
@@ -458,7 +458,7 @@ ul.history li .featured-box .box-content {
 
 .recent-posts .date .month,
 article.post .post-date .month {
-	background-color: #0088cc;
+	background-color: #005db9;
 }
 
 .recent-posts .date .day,
@@ -471,11 +471,11 @@ article.post .post-date .day {
 }
 
 .home-intro p em {
-	color: #00aaff;
+	color: #005db9;
 }
 
 .home-concept strong {
-	color: #0088cc;
+	color: #005db9;
 }
 
 .shop ul.products li.product .onsale {
@@ -489,7 +489,7 @@ article.post .post-date .day {
 }
 
 #footer .footer-ribbon {
-	background: #0088cc;
+	background: #005db9;
 }
 
 #footer .footer-ribbon:before {
