@@ -246,16 +246,16 @@
 							<h4>Nuestras <strong>Sedes</strong></h4>
 					<!-------- agregar el menu selectivo-->
 							<div class="tabs">
-									<ul class="nav nav-tabs">
-										<li class="active"><a href="#DF" data-toggle="tab"> DF, México</a></li>
-										<li><a href="#MTY" data-toggle="tab">Monterrey, México</a></li>
-										<li><a href="#COL" data-toggle="tab">Bogotá, Colombia</a></li>
+									<ul class="nav nav-tabs nav-justified">
+										<li class="active"><a id="dftab" href="#DF" data-toggle="tab"> DF, México</a></li>
+										<li><a id="mtytab" href="#MTY" data-toggle="tab">Monterrey, México</a></li>
+										<li><a id="coltab" href="#COL" data-toggle="tab">Bogotá, Colombia</a></li>
 									</ul>
 					<!-------- agregar el contenido de oficinas y mapas-->
 									<div class="tab-content">
 										<div class="tab-pane active" id="DF">
 											<ul class="simple-post-list">
-												<li>
+												<li id="mapContainerDF">
 													<div id="googlemapsDF" class="google-map small"></div>
 												</li>
 												<li>
@@ -270,10 +270,8 @@
 										</div>
 										<div class="tab-pane" id="MTY">
 											<ul class="simple-post-list">
-												<li>
-													<div width='426px' height='250'>
+												<li id="mapContainerMTY">
 													<div id="googlemapsMTY" class="google-map small"></div>
-													</div>
 												</li>
 												<li>
 													<h4>Oficinas <strong>Monterrey, México</strong></h4>
@@ -286,7 +284,7 @@
 										</div>
 										<div class="tab-pane" id="COL">
 											<ul class="simple-post-list">
-												<li>
+												<li id="mapContainerCOL">
 													<div id="googlemapsCOL" class="google-map small"></div>
 												</li>
 												<li>
@@ -422,6 +420,18 @@
 
 		<script>
 
+			$( document ).ready(function() {
+
+				$("#googlemapsDF").gMap(mapSettingsDF);
+
+				var mapRefDF = $("#googlemapsDF").data('gMap.reference');
+				mapRefDF.mapTypes.set('map_style', styledMap);
+		 		mapRefDF.setMapTypeId('map_style');
+
+		 		$("[data-toggle='tab']").on('click', createOtherMaps);
+
+			});	
+
 			/*
 			Map Settings
 
@@ -430,8 +440,9 @@
 					- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
 
 			*/
-		//////////////////////////////////////////////////////////////////////////////
+		
 			//Información de oficinas del DF
+
 			// Map Markers 
 			var mapMarkersDF = [{
 				address: "19.364451, -99.191740",
@@ -466,13 +477,12 @@
 				zoom: 16
 			};
 
-			var map = $("#googlemapsDF").gMap(mapSettingsDF),
-				mapRef = $("#googlemapsDF").data('gMap.reference');
-		////////////////////////////////////////////////////////////////////////////
+			
 			//Información de oficinas de Monterrey
+
 			// Map Markers 
 			var mapMarkersMTY = [{
-				address: "25.644090, -100.353224",
+				address: "25.64316, -100.35374",
 				html: "<strong>GAPSI Monterrey </strong><br><a target='_blank' href='https://www.google.com/maps/place/25%C2%B038'38.7%22N+100%C2%B021'11.6%22W/@25.644081,-100.353213,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x0?hl=en'>Ver en Google Maps</a>",
 				icon: {
 					image: "img/pin.png",
@@ -483,8 +493,8 @@
 			}];
 
 			// Map Initial Location
-			var initLatitudeMTY = 25.644090;
-			var initLongitudeMTY = -100.353224;
+			var initLatitudeMTY = 25.64316;
+			var initLongitudeMTY = -100.35374;
 
 			// Map Extended Settings
 			var mapSettingsMTY = {
@@ -504,9 +514,6 @@
 				zoom: 16
 			};
 
-			var map = $("#googlemapsMTY").gMap(mapSettingsMTY),
-				mapRef = $("#googlemapsMTY").data('gMap.reference');
-		//////////////////////////////////////////////////////////////////////////////
 			//Información de oficinas de Colombia
 			// Map Markers 
 			var mapMarkersCOL = [{
@@ -542,10 +549,7 @@
 				zoom: 16
 			};
 
-			var map = $("#googlemapsCOL").gMap(mapSettingsCOL),
-				mapRef = $("#googlemapsCOL").data('gMap.reference');
-
-		////// Create an array of styles.
+			////// Create an array of styles.
 		 	var mapColor = "#0088cc";
 
 		 	var styles = [{
@@ -571,9 +575,23 @@
 		 	var styledMap = new google.maps.StyledMapType(styles, {
 		 		name: "Styled Map"
 		 	});
+		 	
 
-		 	mapRef.mapTypes.set('map_style', styledMap);
-		 	mapRef.setMapTypeId('map_style');
+		 	function createOtherMaps(){
+
+		 		$("#googlemapsMTY").gMap(mapSettingsMTY);
+
+				var mapRefMTY = $("#googlemapsMTY").data('gMap.reference');
+				mapRefMTY.mapTypes.set('map_style', styledMap);
+				mapRefMTY.setMapTypeId('map_style');
+
+		 		$("#googlemapsCOL").gMap(mapSettingsCOL);
+
+				mapRefCOL = $("#googlemapsCOL").data('gMap.reference');
+				mapRefCOL.mapTypes.set('map_style', styledMap);
+		 		mapRefCOL.setMapTypeId('map_style');
+
+		 	}
 
 		</script>
 
