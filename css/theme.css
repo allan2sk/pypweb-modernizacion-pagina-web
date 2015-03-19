@@ -1072,7 +1072,13 @@ body.sticky-menu-active #header.transparent.semi-transparent.font-color-light na
 #header nav.mega-menu ul.nav-main .mega-menu-signin.logged .list-account-options a:hover {
 	text-decoration: none;
 }
-
+#background-logo{
+	/*background: url(../img/logo-gapsi-marca-agua.png) no-repeat center center; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;*/
+}
 body #header nav.mega-menu .mega-menu-signin ul.dropdown-menu li a, body #header nav.mega-menu .mega-menu-signin ul.dropdown-menu:hover li:hover li:hover a {
 	background-color: transparent !important;
 	color: #333;
@@ -1977,7 +1983,7 @@ aside ul.nav-list > li > a {
 }
 
 .home-concept .sun {
-	background: transparent url(../img/home-concept-icons.png) no-repeat 0 0;
+	background: transparent url(../img/logo-gapsi-marca-agua.png) no-repeat 0 0;
 	width: 60px;
 	height: 56px;
 	display: block;
@@ -1987,7 +1993,7 @@ aside ul.nav-list > li > a {
 }
 
 .home-concept .cloud {
-	background: transparent url(../img/home-concept-icons.png) no-repeat 100% 0;
+	background: transparent url(../img/logo-gapsi-marca-agua.png) no-repeat 100% 0;
 	width: 116px;
 	height: 56px;
 	display: block;
