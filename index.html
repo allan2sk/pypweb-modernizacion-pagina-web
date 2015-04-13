@@ -609,13 +609,13 @@
 				<strong>Success!</strong> Has sido añadido a nuestro boletín.
 								</div>
 			
-								<div class="alert alert-danger hidden" id="newsletterError"></div>
+								<div class="alert alert-danger hidden" id="newsletterError"><strong>Error!</strong> Error al tratar dar de alta.</div>
 			
 								<form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
 									<div class="input-group">
 										<input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
 										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">ir</button>
+											<button id="subscribe" class="btn btn-default" type="button">ir</button>
 										</span>
 									</div>
 								</form>
@@ -727,6 +727,39 @@
 		
 		</script>
 		 -->
+		 <script>
+$(document).ready(function(){
 
+function validateEmail($email) {
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+  return emailReg.test( $email );
+}
+
+
+	$body = $("body");
+	$(document).on({
+			ajaxStart: function() { $body.addClass("loading");    },
+			ajaxStop: function() { $body.removeClass("loading"); }    
+		});
+		
+	$("#subscribe" ).click(function() {
+	
+		var email = $("#newsletterEmail").val();
+		if( !validateEmail(email)) { 
+			alert("E-mail inválido");
+			return;
+		}
+        var ajaxurl = 'php/subscribe.php',
+        data =  {'email': email};
+        $.post(ajaxurl, data, function (response) {
+            // Response div goes here.
+            //alert('action performed successfully. ' + response);
+			$("#newsletterSuccess").removeClass("hidden");
+        }).error(function() { $("#newsletterError").removeClass("hidden"); });
+	});
+});
+</script>
+
+	<div class="modal"><!-- Place at bottom of page --></div>
 	</body>
 </html>
