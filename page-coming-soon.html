@@ -41,6 +41,18 @@
 
 		<!-- Head Libs -->
 		<script src="vendor/modernizr/modernizr.js"></script>
+		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
+		<script>
+		$( document ).ready(function() {
+ 
+			$.get("/header.html #header", function(data) {
+				$("#header").replaceWith(data);
+			});
+			$.get("/footer.html #footer", function(data) {
+				$("#footer").replaceWith(data);
+			});
+		});
+		</script>
 
 		<!--[if IE]>
 			<link rel="stylesheet" href="css/ie.css">
@@ -55,93 +67,7 @@
 	<body>
 
 		<div class="body coming-soon">
-			<header id="header" class="narrow" data-plugin-options='{"alwaysStickyEnabled": true, "stickyEnabled": true, "stickyWithGap": false, "stickyChangeLogoSize": false}'>
-
-				<div class="container">
-
-					<div class="logo">
-
-						<a href="index.html">
-
-							<img alt="Porto" width="148" height="70" src="img/logo.png">
-
-						</a>
-
-					</div>
-
-					<button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
-
-						<i class="fa fa-bars"></i>
-
-					</button>
-
-				</div>
-
-
-				<div class="navbar-collapse nav-main-collapse collapse">
-					<div class="container">
-						<ul class="social-icons">
-							<li class="facebook"><a href="https://www.facebook.com/pages/GAPSI-Integraci%C3%B3n/460009750766668?ref=hl" target="_blank" title="Facebook">Facebook</a></li>
-							<li class="twitter"><a href="https://twitter.com/GAPSIntegracion" target="_blank" title="Twitter">Twitter</a></li>
-							<li class="linkedin"><a href="https://www.linkedin.com/profile/view?id=210430877&trk=nav_responsive_tab_profile" target="_blank" title="Linkedin">Linkedin</a></li>
-						</ul>
-                        
-                        
-						<nav class="nav-main mega-menu">
-							<ul class="nav nav-pills nav-main" id="mainMenu">
-                            
-                            <li>
-									<a href="index.html">Home</a>
-							  </li>
-							  <li class="dropdown">
-									<a class="dropdown-toggle" href="index.html">
-										Nosotros
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="about-us-basic.html"> ¿Quienes somos?</a></li>
-										<li><a href="page-our-office.html">Oficinas</a></li>
-										<li><a href="page-coming-soon.html">Reconocimientos</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a class="dropdown-toggle" href="index.html">
-										Servicios y Productos
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="page-coming-soon.html"> Servicios</a></li>
-										<li><a href="page-coming-soon.html">Herramientas</a></li>
-										<li><a href="page-coming-soon.html">Cursos</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a class="dropdown-toggle" href="index.html">
-										Experiencia
-										<i class="fa fa-angle-down"></i>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="page-coming-soon.html"> Casos de Éxito</a></li>
-										<li><a href="page-coming-soon.html">Clientes</a></li>
-										<li><a href="page-coming-soon.html">Alianzas</a></li>
-										<li><a href="page-coming-soon.html">Eventos</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="cpage-coming-soon.html">
-										Únete al equipo
-									</a>
-								</li>
-								<li>
-									<a href="contact-us.html">
-										Contáctanos
-									</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</header>
+			<div id="header"></div>
 			<div role="main" class="main">
 				<div class="container">
 					<div class="row">
@@ -220,101 +146,7 @@
 					</div>
 				</div>
 			</div>
-
-			<footer id="footer">
-				<div class="container">
-					<div class="row">
-						<div class="footer-ribbon">
-							<p><span>Entra en contacto</span>
-						  </p>
-						</div>
-						<div class="col-md-3">
-							<div class="newsletter">
-								<h4>Newsletter</h4>
-								<p>Manténgase informado siempre de la evolución en la tecnología con nuestro innovador Newsletter. Ingrese su dirección de e-mail y suscríbase a nuestro boletín mensual.</p>
-<div class="alert alert-success hidden" id="newsletterSuccess">
-				<strong>Success!</strong> You've been added to our email list.
-								</div>
-			
-								<div class="alert alert-danger hidden" id="newsletterError"></div>
-			
-								<form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
-									<div class="input-group">
-										<input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">ir</button>
-										</span>
-									</div>
-								</form>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<h4>Tweets</h4>
-							<div id="tweet" class="twitter" data-plugin-tweets data-plugin-options='{"username": "", "count": 2}'>
-								<p>Porfavor espere...</p>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="contact-details">
-							  <h4>Contáctanos</h4>
-								<ul class="contact">
-								  <li><i class="fa fa-map-marker"></i><strong>México, D.F.</strong><br>
-								    Cerrada Juan Tinoco #15, Col. Merced Gómez, Del. Alvaro Obregón CP. 01600, México, DF.<br>
-								    Tel: (52 )55 9000 3959									</li>
-                                    
-                                    <li>
-									  <p><i class="fa fa-map-marker"></i><strong>Monterrey</strong>, Nuevo León<br>
-									  Torre IOS Campestre: Av. Ricardo Margain 575 Col. Sta. Engracia. San Pedro Garza García, N.L. México. C.P. 66267 <br>
-									  Tel: (81) 8000 7133</p>
-									  <p><i class="fa fa-map-marker"></i><strong>Bogotá, Colombia</strong><br>
-									    Carrera 45 A No. 137-59 Bogotá D.C<br>
-								      Tel: (57 )1 7965460</p>
-                                    </li>
-									<li>									</li>
-									<li>
-									  <p><i class="fa fa-envelope"></i> <strong>Email:</strong> marketing@grupoasesores.com.mx / info@gapsi.com.co</p>
-									  <p>&nbsp;</p>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2">
-							<h4>Siguenos en :</h4>
-							<div class="social-icons">
-								<ul class="social-icons">
-									<li class="facebook"><a href="https://www.facebook.com/pages/GAPSI-Integraci%C3%B3n/460009750766668?ref=tn_tnmn" target="_blank" data-placement="bottom" data-tooltip title="Facebook">Facebook</a></li>
-									<li class="twitter"><a href="https://twitter.com/GAPSIntegracion" target="_blank" data-placement="bottom" data-tooltip title="Twitter">Twitter</a></li>
-									<li class="linkedin"><a href="https://www.linkedin.com/profile/view?id=210430877&trk=nav_responsive_tab_profile" target="_blank" data-placement="bottom" data-tooltip title="Linkedin">Linkedin</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-copyright">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-1">
-								<a href="index.html" class="logo">
-									<img alt="Porto Website Template" class="img-responsive" src="img/logo-footer.png">
-								</a>
-							</div>
-							<div class="col-md-7">
-								<p>© Copyright 2015. </p>
-							</div>
-							<div class="col-md-4">
-								<nav id="sub-menu">
-									<ul>
-										<li><a href="">FAQ's</a></li>
-										<li><a href="">Mapa</a></li>
-										<li><a href="
-                                        ">Contáctanos</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer> 
+			<div id="footer"></div>
 		</div>
 
 		<!-- Vendor -->
