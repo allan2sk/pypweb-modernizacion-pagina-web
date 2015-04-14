@@ -46,9 +46,12 @@
 		<script>
 		$( document ).ready(function() {
 			
-			function validateEmail($email) {
+			function validateEmail(email) {
+				if (!email || 0 === email.length) {
+					return false;
+				}
 				var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-				return emailReg.test( $email );
+				return emailReg.test( email );
 			}
 
 			//H5 14abril2015: Cambio para spinner de suscripción de newsletter
