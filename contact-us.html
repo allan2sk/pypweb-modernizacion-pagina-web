@@ -41,10 +41,10 @@
 		<script>
 		$( document ).ready(function() {
  
-			$.get("/header.html #header", function(data) {
+			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
-			$.get("/footer.html #footer", function(data) {
+			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 			});
 		});
