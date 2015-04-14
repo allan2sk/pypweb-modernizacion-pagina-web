@@ -45,12 +45,48 @@
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
 		$( document ).ready(function() {
+			
+			function validateEmail($email) {
+				var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+				return emailReg.test( $email );
+			}
+
+			//H5 14abril2015: Cambio para spinner de suscripción de newsletter
+			$body = $("body");
+			$(document).on({
+				ajaxStart: function() { $body.addClass("loading");    },
+				ajaxStop: function() { $body.removeClass("loading"); }    
+			});
+			//H5 14abril2015: Fin cambio
  
-			$.get("/header.html #header", function(data) {
+			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
-			$.get("/footer.html #footer", function(data) {
+			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
+				
+				//H5 14abril2015: Cambio para suscribir al newsletter
+				$("#subscribe").click(function() {
+					var email = $("#newsletterEmail").val();
+					if( !validateEmail(email)) { 
+						alert("Por favor escriba un E-mail válido.");
+						return;
+					}
+					var ajaxurl = 'php/subscribe.php',
+					data =  {'email': email};
+					$.post(ajaxurl, data, function (response) {
+						$("#newsletterSuccess").removeClass("hidden");
+						$("#subscribe").prop("disabled", true);
+					}).fail(function(jqXHR, textStatus, errorThrown) { 
+						console.log("Error al procesar solicitud de suscripción de newsletter. Detalle: ");
+						console.log(jqXHR);
+						$("#newsletterError").append(jqXHR.responseText);
+						$("#newsletterError").removeClass("hidden");
+						$("#subscribe").prop("disabled", true);						
+					});
+				});
+				//H5 14abril2015: Fin cambio.
+				
 			});
 		});
 		</script>
@@ -567,6 +603,6 @@
 		
 		</script>
 		 -->
-
+		<div class="modal"><!-- Place at bottom of page --></div>
 	</body>
 </html>

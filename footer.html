@@ -10,16 +10,16 @@
 								<h4>Boletín de Noticias</h4>
 								<p>Mantente informado de las nuevas ofertas de GAPSI. <br />Ingresa tu dirección de e-mail y suscribete a nuestro boletín mensual.</p>
 <div class="alert alert-success hidden" id="newsletterSuccess">
-				<strong>Success!</strong> Has sido añadido a nuestro boletín.
+				<strong>¡Éxito!</strong> Has sido añadido a nuestro boletín.
 								</div>
 			
-								<div class="alert alert-danger hidden" id="newsletterError"></div>
+								<div class="alert alert-danger hidden" id="newsletterError"><strong>¡Error! </strong></div>
 			
 								<form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
 									<div class="input-group">
 										<input class="form-control" placeholder="Email Address" name="newsletterEmail" id="newsletterEmail" type="text">
 										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">ir</button>
+											<button id="subscribe" class="btn btn-default" type="button">ir</button>
 										</span>
 									</div>
 								</form>
