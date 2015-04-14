@@ -62,32 +62,42 @@
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
+			
+			
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
-				
+				$("#newsletterForm").submit(false);
 				//H5 14abril2015: Cambio para suscribir al newsletter
-				$("#subscribe").click(function() {
-					var email = $("#newsletterEmail").val();
-					if( !validateEmail(email)) { 
-						alert("Por favor escriba un E-mail válido.");
-						return;
+				$("#subscribe").click(subscribe);
+				$("#newsletterEmail").keypress(function(event){
+					var keycode = (event.keyCode ? event.keyCode : event.which);
+					if(keycode == '13'){
+						subscribe();
 					}
-					var ajaxurl = 'php/subscribe.php',
-					data =  {'email': email};
-					$.post(ajaxurl, data, function (response) {
-						$("#newsletterSuccess").removeClass("hidden");
-						$("#subscribe").prop("disabled", true);
-					}).fail(function(jqXHR, textStatus, errorThrown) { 
-						console.log("Error al procesar solicitud de suscripción de newsletter. Detalle: ");
-						console.log(jqXHR);
-						$("#newsletterError").append(jqXHR.responseText);
-						$("#newsletterError").removeClass("hidden");
-						$("#subscribe").prop("disabled", true);						
-					});
 				});
-				//H5 14abril2015: Fin cambio.
-				
+				//H5 14abril2015: Fin cambio.	
 			});
+			//H5 14abril2015: Cambio para suscribir al newsletter
+			function subscribe() {
+				var email = $("#newsletterEmail").val();
+				if( !validateEmail(email)) { 
+					alert("Por favor escriba un E-mail válido.");
+					return;
+				}
+				var ajaxurl = 'php/subscribe.php',
+				data =  {'email': email};
+				$.post(ajaxurl, data, function (response) {
+					$("#newsletterSuccess").removeClass("hidden");
+					$("#subscribe").prop("disabled", true);
+				}).fail(function(jqXHR, textStatus, errorThrown) { 
+					console.log("Error al procesar solicitud de suscripción de newsletter. Detalle: ");
+					console.log(jqXHR);
+					$("#newsletterError").append(jqXHR.responseText);
+					$("#newsletterError").removeClass("hidden");
+					$("#subscribe").prop("disabled", true);						
+				});
+			}
+			//H5 14abril2015: Fin cambio.	
 		});
 		</script>
 
