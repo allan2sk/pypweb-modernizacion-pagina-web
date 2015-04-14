@@ -54,13 +54,11 @@
 				return emailReg.test( email );
 			}
 
-			//H5 14abril2015: Cambio para spinner de suscripción de newsletter
 			$body = $("body");
 			$(document).on({
 				ajaxStart: function() { $body.addClass("loading");    },
 				ajaxStop: function() { $body.removeClass("loading"); }    
 			});
-			//H5 14abril2015: Fin cambio
  
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
@@ -69,7 +67,7 @@
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 				$("#newsletterForm").submit(false);
-				//H5 14abril2015: Cambio para suscribir al newsletter
+
 				$("#subscribe").click(subscribe);
 				$("#newsletterEmail").keypress(function(event){
 					var keycode = (event.keyCode ? event.keyCode : event.which);
