@@ -45,13 +45,61 @@
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
 		$( document ).ready(function() {
+			
+			function validateEmail(email) {
+				if (!email || 0 === email.length) {
+					return false;
+				}
+				var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+				return emailReg.test( email );
+			}
+
+			//H5 14abril2015: Cambio para spinner de suscripción de newsletter
+			$body = $("body");
+			$(document).on({
+				ajaxStart: function() { $body.addClass("loading");    },
+				ajaxStop: function() { $body.removeClass("loading"); }    
+			});
+			//H5 14abril2015: Fin cambio
  
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
+
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
+				$("#newsletterForm").submit(false);
+				//H5 14abril2015: Cambio para suscribir al newsletter
+				$("#subscribe").click(subscribe);
+				$("#newsletterEmail").keypress(function(event){
+					var keycode = (event.keyCode ? event.keyCode : event.which);
+					if(keycode == '13'){
+						subscribe();
+					}
+				});
+
 			});
+
+			function subscribe() {
+				var email = $("#newsletterEmail").val();
+				if( !validateEmail(email)) { 
+					alert("Por favor escriba un E-mail válido.");
+					return;
+				}
+				var ajaxurl = 'php/subscribe.php',
+				data =  {'email': email};
+				$.post(ajaxurl, data, function (response) {
+					$("#newsletterSuccess").removeClass("hidden");
+					$("#subscribe").prop("disabled", true);
+				}).fail(function(jqXHR, textStatus, errorThrown) { 
+					console.log("Error al procesar solicitud de suscripción de newsletter. Detalle: ");
+					console.log(jqXHR);
+					$("#newsletterError").append(jqXHR.responseText);
+					$("#newsletterError").removeClass("hidden");
+					$("#subscribe").prop("disabled", true);						
+				});
+			}
+
 		});
 		</script>
 
@@ -552,21 +600,17 @@
 		<!-- Theme Initialization Files -->
 		<script src="js/theme.init.js"></script>
 
-		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
-		<script type="text/javascript">
-		
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-12345678-1']);
-			_gaq.push(['_trackPageview']);
-		
-			(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-		
-		</script>
-		 -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+		  ga('create', 'UA-56739718-1', 'auto');
+		  ga('require', 'displayfeatures');
+		  ga('send', 'pageview');
+
+		</script>
+		<div class="modal"><!-- Place at bottom of page --></div>
 	</body>
 </html>
