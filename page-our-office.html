@@ -273,11 +273,11 @@
 				var mapRefDF = $("#googlemapsDF").data('gMap.reference');
 				mapRefDF.mapTypes.set('map_style', styledMap);
 		 		mapRefDF.setMapTypeId('map_style');
+				
+		 		$("[data-toggle='tab']").on('shown.bs.tab', createOtherMaps);
 
-		 		$("[data-toggle='tab']").on('mouseout', createOtherMaps);
-
-			});	
-
+			});
+			
 			/*
 			Map Settings
 
@@ -286,7 +286,11 @@
 					- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
 
 			*/
-		
+			var loadedMaps = {
+				dfMap: false,
+				mtyMap: false,
+				colMap: false
+			};
 			//Información de oficinas del DF
 
 			// Map Markers 
@@ -322,7 +326,6 @@
 				longitude: initLongitudeDF,
 				zoom: 16
 			};
-
 			
 			//Información de oficinas de Monterrey
 
@@ -423,21 +426,32 @@
 		 	});
 		 	
 		 	//load maps for Monterreey and Colombia
-		 	function createOtherMaps(){
-
-		 		$("#googlemapsMTY").gMap(mapSettingsMTY);
-
-				var mapRefMTY = $("#googlemapsMTY").data('gMap.reference');
-				mapRefMTY.mapTypes.set('map_style', styledMap);
-				mapRefMTY.setMapTypeId('map_style');
-
-		 		$("#googlemapsCOL").gMap(mapSettingsCOL);
-
-				mapRefCOL = $("#googlemapsCOL").data('gMap.reference');
-				mapRefCOL.mapTypes.set('map_style', styledMap);
-		 		mapRefCOL.setMapTypeId('map_style');
-
+		 	function createOtherMaps(e){
+				switch($(e.target).attr("id")) {
+					case "mtytab":
+						if (!loadedMaps.mtyMap) {
+							loadMap("#googlemapsMTY", mapSettingsMTY);
+							loadedMaps.mtyMap = true;
+						}
+						break;
+					case "coltab":
+						if (!loadedMaps.colMap) {
+							loadMap("#googlemapsCOL", mapSettingsCOL);
+							loadedMaps.colMap = true;
+						}
+						break;
+					default:
+						break;
+				}	
 		 	}
+			
+			function loadMap(mapId, mapSettings) {
+				$(mapId).gMap(mapSettings);
+				var mapRef = $(mapId).data('gMap.reference');
+				mapRef.mapTypes.set('map_style', styledMap);
+				mapRef.setMapTypeId('map_style');
+				google.maps.event.trigger(mapRef, 'resize');
+			}
 
 		</script>
 
