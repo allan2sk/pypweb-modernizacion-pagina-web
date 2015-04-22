@@ -39,17 +39,28 @@
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
-		$( document ).ready(function() {
- 
+		var completeHeader = false;
+		var completeFooter = false;
+		
+		function loadScripts() {
+			$.getScript( "js/theme.js", function( data, textStatus, jqxhr ) {
+				$.getScript( "js/theme.init.js");
+			});
+		}
+		
+		$(function() {
+			
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
+
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 			});
+			
+			
 		});
 		</script>
-
 		<!--[if IE]>
 			<link rel="stylesheet" href="css/ie.css">
 		<![endif]-->

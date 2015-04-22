@@ -43,14 +43,26 @@
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
-		$( document ).ready(function() {
- 
+		var completeHeader = false;
+		var completeFooter = false;
+		
+		function loadScripts() {
+			$.getScript( "js/theme.js", function( data, textStatus, jqxhr ) {
+				$.getScript( "js/theme.init.js");
+			});
+		}
+		
+		$(function() {
+			
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
+
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 			});
+			
+			
 		});
 		</script>
 
@@ -77,9 +89,9 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12 center">
-							<h1 class="short small">Esta sección del sitio web se encuentra en construcción</h1>
-							<h4>Estamos trabajando para ofrecerte una mejor experiencia de usuario</h4>
-							<h6>En breve toda la información sobre nuestra compañia estará disponible.</h6>
+							<h1 class="short small">Nuestro nuevo sitio web sera publicado próximamente</h1>
+							<p class="short lead">Estamos trabajando para ofrecerte una mejor experiencia de usuario.</p>
+							<p>En breve toda la información sobre nuestra compañia estará disponible.</p>
 						</div>
 					</div>
 					<div class="row">
@@ -107,11 +119,11 @@
 									</div>
 								</div>
 								<div class="progress-label">
-									<span><strong>Desarrollo:</strong> En proceso</span>
+									<span><strong>Desarrollo:</strong> Iniciando</span>
 								</div>
 								<div class="progress">
-									<div class="progress-bar progress-bar-primary" data-appear-progress-animation="45%" data-appear-animation-delay="600">
-										<span class="progress-bar-tooltip">45%</span>
+									<div class="progress-bar progress-bar-primary" data-appear-progress-animation="35%" data-appear-animation-delay="600">
+										<span class="progress-bar-tooltip">35%</span>
 									</div>
 								</div>
 							</div>
