@@ -1479,6 +1479,9 @@ body #header nav.mega-menu .mega-menu-signin ul.dropdown-menu li a, body #header
 .page-top.custom-product p.lead {
 	color: #E8E8E8;
 }
+p.lead .alternative-font{
+	font-size: 1.3em;
+}
 
 .page-top.custom-product img {
 	bottom: -47px;
