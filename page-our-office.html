@@ -39,14 +39,26 @@
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
-		$( document ).ready(function() {
- 
+		var completeHeader = false;
+		var completeFooter = false;
+		
+		function loadScripts() {
+			$.getScript( "js/theme.js", function( data, textStatus, jqxhr ) {
+				$.getScript( "js/theme.init.js");
+			});
+		}
+		
+		$(function() {
+			
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
+
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 			});
+			
+			
 		});
 		</script>
 
@@ -151,48 +163,24 @@
 
 							<div class="row lightbox" data-plugin-options='{"delegate": "a", "type": "image", "gallery": {"enabled": true}}'>
 								<div class="col-md-4">
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 									<a class="img-thumbnail push-bottom" href="img/our-office-1.jpg" data-plugin-options='{"type":"image"}'>
 										<img class="img-responsive" src="img/Oficinas/sala-2.png">
-=======
->>>>>>> Stashed changes
-									<a class="img-thumbnail push-bottom" href="img/Oficinas/3.png" data-plugin-options='{"type":"image"}'>
-										<img class="img-responsive" src="img/Oficinas/3.png">
->>>>>>> origin/master
 										<span class="zoom">
 											<i class="fa fa-search"></i>
 										</span>
 									</a>
 								</div>
 								<div class="col-md-4">
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 									<a class="img-thumbnail push-bottom" href="img/our-office-2.jpg" data-plugin-options='{"type":"image"}'>
 										<img class="img-responsive" src="img/oficinas2.png">
-=======
->>>>>>> Stashed changes
-									<a class="img-thumbnail push-bottom" href="img/Oficinas/2.png" data-plugin-options='{"type":"image"}'>
-										<img class="img-responsive" src="img/Oficinas/2.png">
->>>>>>> origin/master
 										<span class="zoom">
 											<i class="fa fa-search"></i>
 										</span>
 									</a>
 								</div>
 								<div class="col-md-4">
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 									<a class="img-thumbnail push-bottom" href="img/our-office-3.jpg" data-plugin-options='{"type":"image"}'>
 										<img class="img-responsive" src="img/Oficinas/sala-1.png">
-=======
->>>>>>> Stashed changes
-									<a class="img-thumbnail push-bottom" href="img/Oficinas/4.png" data-plugin-options='{"type":"image"}'>
-										<img class="img-responsive" src="img/Oficinas/4.png">
->>>>>>> origin/master
 										<span class="zoom">
 											<i class="fa fa-search"></i>
 										</span>
@@ -301,17 +289,24 @@
 		<script>
 			//Load DF map when the page is loaded
 			$( document ).ready(function() {
-
+				$(window).resize(function(){
+					for (var key in loadedMaps) {
+					  if (loadedMaps.hasOwnProperty(key)) {
+						loadedMaps[key] = false;
+					  }
+					}
+				});
+		 
 				$("#googlemapsDF").gMap(mapSettingsDF);
 
 				var mapRefDF = $("#googlemapsDF").data('gMap.reference');
 				mapRefDF.mapTypes.set('map_style', styledMap);
 		 		mapRefDF.setMapTypeId('map_style');
+				loadedMaps.dfMap = true;
+		 		$("[data-toggle='tab']").on('shown.bs.tab', createOtherMaps);
 
-		 		$("[data-toggle='tab']").on('mouseout', createOtherMaps);
-
-			});	
-
+			});
+			
 			/*
 			Map Settings
 
@@ -320,7 +315,11 @@
 					- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
 
 			*/
-		
+			var loadedMaps = {
+				dfMap: false,
+				mtyMap: false,
+				colMap: false
+			};
 			//Información de oficinas del DF
 
 			// Map Markers 
@@ -356,7 +355,6 @@
 				longitude: initLongitudeDF,
 				zoom: 16
 			};
-
 			
 			//Información de oficinas de Monterrey
 
@@ -457,21 +455,38 @@
 		 	});
 		 	
 		 	//load maps for Monterreey and Colombia
-		 	function createOtherMaps(){
-
-		 		$("#googlemapsMTY").gMap(mapSettingsMTY);
-
-				var mapRefMTY = $("#googlemapsMTY").data('gMap.reference');
-				mapRefMTY.mapTypes.set('map_style', styledMap);
-				mapRefMTY.setMapTypeId('map_style');
-
-		 		$("#googlemapsCOL").gMap(mapSettingsCOL);
-
-				mapRefCOL = $("#googlemapsCOL").data('gMap.reference');
-				mapRefCOL.mapTypes.set('map_style', styledMap);
-		 		mapRefCOL.setMapTypeId('map_style');
-
+		 	function createOtherMaps(e){
+				switch($(e.target).attr("id")) {
+					case "dftab":
+						if (!loadedMaps.mtyMap) {
+							loadMap("#googlemapsDF", mapSettingsDF);
+							loadedMaps.dfMap = true;
+						}
+						break;
+					case "mtytab":
+						if (!loadedMaps.mtyMap) {
+							loadMap("#googlemapsMTY", mapSettingsMTY);
+							loadedMaps.mtyMap = true;
+						}
+						break;
+					case "coltab":
+						if (!loadedMaps.colMap) {
+							loadMap("#googlemapsCOL", mapSettingsCOL);
+							loadedMaps.colMap = true;
+						}
+						break;
+					default:
+						break;
+				}	
 		 	}
+			
+			function loadMap(mapId, mapSettings) {
+				$(mapId).gMap(mapSettings);
+				var mapRef = $(mapId).data('gMap.reference');
+				mapRef.mapTypes.set('map_style', styledMap);
+				mapRef.setMapTypeId('map_style');
+				google.maps.event.trigger(mapRef, 'resize');
+			}
 
 		</script>
 

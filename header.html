@@ -36,7 +36,7 @@
 									<a href="index.html">Inicio</a>
 							  </li>
 							  <li class="dropdown">
-									<a class="dropdown-toggle" href="#">
+									<a class="dropdown-toggle" href="#" data-toggle="dropdown">
 										Nosotros
 										<i class="fa fa-angle-down"></i>
 									</a>
@@ -83,4 +83,13 @@
 						</nav>
 					</div>
 				</div>
+				<script>
+				completeHeader = true;
+				console.log("header::completeHeader: " + completeHeader);
+				console.log("header::completeFooter: " + completeFooter);
+				
+				if (completeHeader && completeFooter) {
+					loadScripts();
+				}
+				</script>
 			</header>

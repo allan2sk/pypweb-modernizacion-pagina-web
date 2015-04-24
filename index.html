@@ -46,8 +46,17 @@
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
-		$( document ).ready(function() {
-
+		var completeHeader = false;
+		var completeFooter = false;
+		
+		function loadScripts() {
+			$.getScript( "js/theme.js", function( data, textStatus, jqxhr ) {
+				$.getScript( "js/theme.init.js");
+			});
+		}
+		
+		$(function() {
+			
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
@@ -55,7 +64,8 @@
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 			});
-	
+			
+			
 		});
 		</script>
 
@@ -347,7 +357,7 @@
 											<i class="fa fa-file"></i>
 										</div>
 										<div class="feature-box-info">
-											<h4 class="shorter">Pólizas </h4>
+											<h4 class="shorter">Póliza</h4>
 											<p class="tall">Pólizas integrales de soporte para garantizar la continuidad del negocio.</p>
 										</div>
 									</div>

@@ -39,14 +39,26 @@
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
-		$( document ).ready(function() {
- 
+		var completeHeader = false;
+		var completeFooter = false;
+		
+		function loadScripts() {
+			$.getScript( "js/theme.js", function( data, textStatus, jqxhr ) {
+				$.getScript( "js/theme.init.js");
+			});
+		}
+		
+		$(function() {
+			
 			$.get("header.html #header", function(data) {
 				$("#header").replaceWith(data);
 			});
+
 			$.get("footer.html #footer", function(data) {
 				$("#footer").replaceWith(data);
 			});
+			
+			
 		});
 		</script>
 
@@ -93,11 +105,11 @@
 						<div class="col-md-6">
 
 							<div class="alert alert-success hidden" id="contactSuccess">
-								<strong>Success!</strong> Your message has been sent to us.
+								<strong>¡Éxito!</strong> Tu mensaje ha sido recibido.
 							</div>
 
 							<div class="alert alert-danger hidden" id="contactError">
-								<strong>Error!</strong> There was an error sending your message.
+								<strong>¡Error!</strong> Oops, hubo un error al procesar la solicitud.
 							</div>
 							<form id="contactForm" action="php/contact-form.php" method="POST">
                             						  <h4 class="push-top">Ponte en contacto con nosotros</h4>

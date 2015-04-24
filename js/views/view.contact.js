@@ -24,7 +24,7 @@ Version: 		3.7.0
 			// Ajax Submit
 			$.ajax({
 				type: 'POST',
-				url: $form.attr('action'),
+				url: 'php/contact-form-google-form.php',
 				data: {
 					name: $form.find('#name').val(),
 					email: $form.find('#email').val(),

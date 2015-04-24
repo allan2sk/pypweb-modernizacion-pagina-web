@@ -491,6 +491,10 @@ ul.thumbnail-gallery li {
 	margin: 10px 10px 0 0;
 	padding: 0;
 }
+ul.thumbnail-gallery img{
+	width: 70px;
+	height: 70px;
+}
 
 /* Responsive */
 @media (max-width: 991px) {
