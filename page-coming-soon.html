@@ -7,7 +7,9 @@
 
 		<!-- Basic -->
 		<meta charset="utf-8">
-		<title>Coming Soon | Porto - Responsive HTML5 Template 3.7.0</title>		
+		<title>Coming Soon | Porto - Responsive HTML5 Template 3.7.0</title>	
+        <link rel="icon" href="img/Logo2.ico" type="image/x-icon">
+    	<link rel="shortcut icon" href="img/Logo2.ico" type="image/x-icon"/>			
 		<meta name="keywords" content="HTML5 Template" />
 		<meta name="description" content="Porto - Responsive HTML5 Template">
 		<meta name="author" content="okler.net">
@@ -47,9 +49,11 @@
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script type='text/javascript'>
 			window.onload=function(){		
+
 			document.getElementById('message').value=window.location.hash.substring(1);
 			document.getElementById('proximapag1').innerHTML=window.location.hash.substring(1);
 			document.getElementById('proximapag2').innerHTML=window.location.hash.substring(1);
+
 			}
 			window.onhashchange=function(){
 				window.location.reload();
@@ -143,7 +147,9 @@
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
 							
+
 							<h5>Me gustaría ser notificado cuando la página "<span id="proximapag2"></span>" este terminada</h5>
+
 
 								<div class="alert alert-success hidden" id="contactSuccess">
 								<strong>¡Éxito!</strong> Tu correo ha sido registrado, te informaremos al publicar esta sesión de nuestra página web.
