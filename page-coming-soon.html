@@ -1,3 +1,6 @@
+<?php
+"$_GET []":$pagina = $_GET['fragment'];
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -42,6 +45,17 @@
 		<!-- Head Libs -->
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
+		<script type='text/javascript'>
+			window.onload=function(){		
+			document.getElementById('message').value=window.location.hash.substring(1);
+			document.getElementById('proximapag1').innerHTML=window.location.hash.substring(1);
+			document.getElementById('proximapag2').innerHTML=window.location.hash.substring(1);
+			}
+			window.onhashchange=function(){
+				window.location.reload();
+			}
+		</script>
+
 		<script>
 		var completeHeader = false;
 		var completeFooter = false;
@@ -66,14 +80,6 @@
 		});
 		</script>
 
-		<!--[if IE]>
-			<link rel="stylesheet" href="css/ie.css">
-		<![endif]-->
-
-		<!--[if lte IE 8]>
-			<script src="vendor/respond/respond.js"></script>
-			<script src="vendor/excanvas/excanvas.js"></script>
-		<![endif]-->
 
 	</head>
 	<body>
@@ -89,7 +95,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12 center">
-							<h1 class="short small">Nuestro nuevo sitio web sera publicado próximamente</h1>
+							<h1 class="short small">Nuestro nuevo sitio web "<span id="proximapag1"></span>" sera publicado próximamente</h1>
 							<p class="short lead">Estamos trabajando para ofrecerte una mejor experiencia de usuario.</p>
 							<p>En breve toda la información sobre nuestra compañia estará disponible.</p>
 						</div>
@@ -136,24 +142,28 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">
-							<div class="newsletter">
-								<h5>Me gustaría ser notificado cuando la página este terminada</h5>
+							
+							<h5>Me gustaría ser notificado cuando la página "<span id="proximapag2"></span>" este terminada</h5>
 
-								<div class="alert alert-success hidden" id="newsletterSuccess">
-									<strong>Success!</strong> Se ha añadido a la lista de correos
+								<div class="alert alert-success hidden" id="contactSuccess">
+								<strong>¡Éxito!</strong> Tu correo ha sido registrado, te informaremos al publicar esta sesión de nuestra página web.
 								</div>
 
-								<div class="alert alert-danger hidden" id="newsletterError"></div>
-
-								<form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
-									<div class="input-group">
-										<input class="form-control" placeholder="Correo Electrónico" name="newsletterEmail" id="newsletterEmail" type="text">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Suscribirse</button>
-										</span>
-									</div>
-								</form>
-							</div>
+								<div class="alert alert-danger hidden" id="contactError">
+								<strong>¡Error!</strong> Oops, hubo un error al procesar la solicitud.
+								</div>
+							<form id="contactForm" action="php/contact-form.php" method="POST">
+										<input type="text" style="display: none" value="Página proximamente" class="form-control" name="name" id="name">
+										<input type="text" style="display: none" value="Me gustaría ser informado cuado liberen el siguiente sitio web:"class="form-control" name="subject" id="subject">
+										<input type="text" style="display: none" class="form-control" name="message" id="message">
+										
+								<div class="input-group">
+										<input type="email" placeholder="Ingresa tu correo electrónico" value="" data-msg-required="Por favor ingresa tu correo electrónico." data-msg-email="Por favor ingrese un correo electrónico válido." class="form-control" name="email" id="email" required>
+									<span class="input-group-btn">
+										<input type="submit" value="Suscribirse" class="btn btn-default" data-loading-text="Loading...">
+									</span>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -186,6 +196,7 @@
 		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 		<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.js"></script>
 		<script src="js/views/view.home.js"></script>
+		<script src="js/views/view.page-coming-soon.js"></script>
 		
 		<!-- Theme Custom -->
 		<script src="js/custom.js"></script>
