@@ -4,7 +4,7 @@
 	<head>
 
 		<!-- Basic -->
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>Home - GAPSI</title>	
        <link rel="icon" href="img/Logo2.ico" type="image/x-icon">
     	<link rel="shortcut icon" href="img/Logo2.ico" type="image/x-icon" />	
@@ -46,7 +46,7 @@
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery/jquery-2.1.3.min.js"></script>
 		<script>
-		var completeHeader = false;
+var completeHeader = false;
 		var completeFooter = false;
 		
 		function loadScripts() {
@@ -67,7 +67,28 @@
 			
 			
 		});
-		</script>
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+        </script>
 
 		<!--[if IE]>
 			<link rel="stylesheet" href="css/ie.css">
@@ -80,7 +101,7 @@
 
 	</head>
     
-    	<body>
+    	<body onLoad="MM_preloadImages('img/home/software.png','img/home/sustitucion2.png','img/home/sustitucion3.png')">
 	
     <div class="body">
 			<div id="header"></div>
@@ -166,25 +187,25 @@
 							    <div align="left"><img src="img/slides/slide-concept-2-5.png" alt="" width="448" height="420"></div>
 							  </div>
 							  <div class="tp-caption blackboard-text lfb "
-									 data-x="230"
+									 data-x="150"
 									 data-y="180"
 									 data-speed="500"
 									 data-start="1000"
-									 data-easing="easeOutExpo" style="font-size: 40px; font-family: 'Shadows Into Light', cursive; color: #FDFDFD;">Experiencia y </div>
+									 data-easing="easeOutExpo" style="font-size: 40px; font-family: 'Shadows Into Light', cursive; color: #FDFDFD;">Consultores certificados</div>
 							  
 							  <div class="tp-caption blackboard-text lfb "
-									 data-x="330"
+									 data-x="130"
 									 data-y="240"
 									 data-speed="500"
 									 data-start="1500"
-									 data-easing="easeOutExpo" style="font-size: 55px; font-family: 'Shadows Into Light', cursive; color: #FFFFFF;">Compromiso</div>
+									 data-easing="easeOutExpo" style="font-size: 55px; font-family: 'Shadows Into Light', cursive; color: #FFFFFF;">en arquitectura soa</div>
 
 								<div class="tp-caption blackboard-text lfb "
-									 data-x="260"
+									 data-x="170"
 									 data-y="290"
 									 data-speed="500"
 									 data-start="1500"
-									 data-easing="easeOutExpo" style="font-size: 30px; font-family: 'Shadows Into Light', cursive; color: #FFFFFF;">en nuestros consultores</div>
+									 data-easing="easeOutExpo" style="font-size: 30px; font-family: 'Shadows Into Light', cursive; color: #FFFFFF;">y plataforma de integracion</div>
 							  
 						  </li>
 							<li data-transition="fade" data-slotamount="5" data-masterspeed="1000" >
@@ -260,7 +281,7 @@
 								de tu empresa
 							</h1>
 							<p class="featured lead">
-								Estamos dispuestos a brindarte nuestro conocimiento y experiencia en asesoría, capacitación, desarrollo e implementación de herramientas tecnológicas, para hacer que tu negocio logre un crecimiento continuo. 
+								Estamos dispuestos a brindarte nuestro conocimiento y experiencia en asesoría, capacitación, desarrollo e implementación de plataformas tecnológicas, para hacer que tu negocio logre un crecimiento continuo. 
 							</p>
 						</div>
 					</div>
@@ -275,20 +296,16 @@
 							<span class="sun"></span>
 							<span class="cloud"></span> -->
 							<div class="col-md-2 col-md-offset-1">
-								<div class="process-image" data-appear-animation="bounceIn" data-appear-animation-delay="200">
-									<img src="img/home/software.png" alt="" width="140" height="140" />
-									<strong>Venta de Software</strong>
+								<div class="process-image" data-appear-animation="bounceIn" data-appear-animation-delay="200"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('sw','','img/home/sustitucion.png',1)"><img src="img/home/sw1.png" alt="" width="140" height="140" id="sw"></a><strong>Venta de Software</strong>
 								</div>
 							</div>
-							<div class="col-md-2">
-								<div class="process-image" data-appear-animation="bounceIn">
-									<img src="img/home/desarrollo.png" alt="" width="140" height="140"/>
-									<strong>Desarrollo a la medida</strong>
+						  <div class="col-md-2">
+								<div class="process-image" data-appear-animation="bounceIn"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('procesos','','img/home/sustitucion2.png',1)"><img src="img/home/desarrollo.png" alt="" width="145" height="145" id="procesos"></a><strong>Desarrollo a la medida</strong>
 								</div>
+								<p>&nbsp;</p>
 							</div>
 							<div class="col-md-2">
-								<div class="process-image" data-appear-animation="bounceIn" data-appear-animation-delay="400">
-                                <img src="img/home/coach.png" alt="" width="140" height="140"/>
+								<div class="process-image" data-appear-animation="bounceIn" data-appear-animation-delay="400"><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('cursos','','img/home/sustitucion3.png',1)"><img src="img/home/coach.png" alt="" width="145" height="145" id="cursos"></a>
 								  <p><strong>Capacitación y Mentoring</strong></p>
 							  </div>
 							</div>
@@ -331,7 +348,7 @@
 										</div>
 										<div class="feature-box-info">
 										  <h4 class="shorter">Cursos de Capacitación</h4>
-											<p class="tall">Cursos presenciales enfocados en conceptos tecnológicos o herramientas de software.</p>
+											<p>Cursos personalizados, con fechas y horarios flexibles, enfocados en conceptos tecnológicos y herramientas de software. De igual manera estamos habilitados para impartir cursos oficiales de IBM.										</p>
 										</div>
 									</div>
 									<div class="feature-box">
@@ -340,7 +357,7 @@
 										</div>
 										<div class="feature-box-info">
 											<h4 class="shorter">Mentoring</h4>
-											<p class="tall">Transferencia de conocimiento del uso práctico de conceptos y herramientas de software aplicando buenas prácticas.</p>
+											<p class="tall">Transferencia de conocimiento del uso práctico de conceptos y plataformas de software aplicando buenas prácticas.</p>
 										</div>
 									</div>
 									<div class="feature-box">
@@ -368,8 +385,8 @@
 											<i class="fa fa-desktop"></i>
 										</div>
 										<div class="feature-box-info">
-											<h4 class="shorter">Desarrollo a la Medida</h4>
-											<p class="tall">Desarrollo de software a la medida para implementar o complementar arquitecturas de integración.</p>
+											<h4 class="shorter">Software a la Medida</h4>
+											<p class="tall">Desarrollo de componentes a la medida para implementar o complementar arquitecturas de integración.</p>
 										</div>
 									</div>
 									<div class="feature-box">
@@ -378,7 +395,7 @@
 										</div>
 										<div class="feature-box-info">
 											<h4 class="shorter">Venta de Software</h4>
-											<p class="tall">Herramientas de reconocidas compañias para proyectos de integración, movilidad, seguridad web, entre otras.</p>
+											<p class="tall">Plataformas de reconocidas compañias para proyectos de integración, movilidad, seguridad web, entre otras.</p>
 										</div>
 									</div>
 									<div class="feature-box">
@@ -387,7 +404,7 @@
 										</div>
 										<div class="feature-box-info">
 											<h4 class="shorter">Verificación de Licenciamiento</h4>
-											<p class="tall">Análisis de estado actual e implementación de herramientas para el monitoreo de licenciamiento de software IBM.</p>
+											<p class="tall">Análisis de estado actual e implementación de herramientas para el monitoreo de uso de licenciamiento de software IBM.</p>
 										</div>
 									</div>
 									<div class="feature-box">
@@ -461,26 +478,28 @@
 													<div class="col-md-6">
 														<article>
 															<div class="date">
-																<span class="day">19</span>
-																<span class="month">Marzo</span>
+																<span class="day">21</span>
+																<span class="month">Mayo</span>
 															</div>
-															<h4><a href="http://sg.com.mx/mobileday/">Mobile Day Software Guru 2015.</a></h4>
-															<p>Mobile Day México está dirigido a profesionistas de TI responsables de construir y mantener aplicaciones móviles en contextos empresariales. Tendremos contenidos de interés para: arquitectos, programadores, diseñadores de interfaces móviles, project managers, gerentes de calidad de software y gerentes de TI.
-                                                             <a href="http://sg.com.mx/mobileday/
-                                                             " class="read-more">Continuar leyendo<i class="fa fa-angle-right"></i></a></p>
+															<h4><a href="http://www.idclatin.com/events/bigdatamex15/">IDC México 2nd Big Data & Analytics</a></h4>
+															<p>La Tercera Plataforma como una tendencia destacada a nivel mundial: 
+Millones de nuevas aplicaciones y servicios deberán ser construídos sobre esa plataforma Innovadora que comprende Cloud, Mobilidad, Tecnologías Sociales y Big Data/Analytics...
+<a href="http://www.idclatin.com/events/bigdatamex15/" class="read-more">Continuar leyendo<i class="fa fa-angle-right"></i></a></p>
 														</article>
 													</div>
 													<div class="col-md-6">
 														<article>
 															<div class="date">
-																<span class="day">06</span>
-																<span class="month">Abril</span>
+																<span class="day">11</span>
+																<span class="month">Junio</span>
 															</div>
-															<h4><a href="http://mexico.theappdate.com/evento/">The App Date México</a></h4>
-															<p>The App Date es el encuentro de referencia para profesionales y apasionados del mundo de las aplicaciones. El último lunes de cada mes, creamos el espacio de conexión, investigación y trabajo sobre apps más 
-                                                            importante del país. The App Date es un foro que suma conocimiento y co-creación...
+															<h4><a href="http://www.bsecureconference.com.mx/2015/2/">b Secure Conference Monterrey</a></h4>
+															<p>Con más de una década de experiencia, el b:Secure Conference se ha convertido en la reunión anual para que los altos tomadores de decisiones de las organizaciones gubernamentales y privadas en México definan y debatan los mecanismos y proyectos que impulsarán su estrategia de ciberseguridad...
+                                                        
 
- <a href="http://mexico.theappdate.com/evento/" class="read-more">Continuar leyendo <i class="fa fa-angle-right"></i></a></p>
+
+
+ <a href="http://www.bsecureconference.com.mx/2015/2/" class="read-more">Continuar leyendo <i class="fa fa-angle-right"></i></a></p>
 														</article>
 													</div>
 												</div>
@@ -527,10 +546,10 @@
 										</div>
 									</div>
 								</div>
-							</div>
+						  </div>
 						</div>
 					</section>
-				</div>
+	  </div>
  			<div id="footer"></div>
 		</div>
 
@@ -566,5 +585,5 @@
 		<!-- Theme Initialization Files -->
 		<script src="js/theme.init.js"></script>
 		<div class="modal"><!-- Place at bottom of page --></div>
-	</body>
+</body>
 </html>
