@@ -18,7 +18,9 @@ Version: 		3.7.0
 				$messageSuccess = $('#contactSuccess'),
 				$messageError = $('#contactError'),
 				$submitButton = $(this.submitButton);
-
+			var PAGE_NAME = 'Proximamente';
+			var SUBSCRIBE_TEXT = 'Me gustaría ser informado cuando liberen el siguiente sitio web: '
+			var SUBSCRIBE_PAGE = window.location.hash.substring(1);
 			$submitButton.button('loading');
 
 			// Ajax Submit
@@ -26,10 +28,10 @@ Version: 		3.7.0
 				type: 'POST',
 				url: 'php/contact-form-google-form.php',
 				data: {
-					name: $form.find('#name').val(),
+					name: PAGE_NAME,
 					email: $form.find('#email').val(),
-					subject: $form.find('#subject').val(),
-					message: $form.find('#message').val()
+					subject: SUBSCRIBE_TEXT,
+					message: SUBSCRIBE_PAGE
 				},
 				dataType: 'json',
 				complete: function(data) {
