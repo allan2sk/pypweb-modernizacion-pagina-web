@@ -13,7 +13,7 @@ Version: 		3.7.0
 	*/
 	$('#contactForm:not([data-type=advanced])').validate({
 		submitHandler: function(form) {
-
+			//Definir información a enviar en el formulario:
 			var $form = $(form),
 				$messageSuccess = $('#contactSuccess'),
 				$messageError = $('#contactError'),
@@ -23,7 +23,7 @@ Version: 		3.7.0
 			var SUBSCRIBE_PAGE = window.location.hash.substring(1);
 			$submitButton.button('loading');
 
-			// Ajax Submit
+			// Ajax Submit para enviar la información al formulario
 			$.ajax({
 				type: 'POST',
 				url: 'php/contact-form-google-form.php',
